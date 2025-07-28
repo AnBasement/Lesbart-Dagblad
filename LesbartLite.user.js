@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gjør DB.no mer lesbar
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Gjør Dagbladets nettsider mer lesbare.
 // @author       AnBasement
 // @match        https://www.dagbladet.no/*
@@ -16,12 +16,22 @@
         document.querySelectorAll('div.breaking-rolling-text-slug').forEach(el => el.remove());
     }
 
+    // Endrer bakgrunnen på artikler til hvit.
+    function hvitBakgrunn() {
+        document.querySelectorAll('article div[class^="content bg-"]').forEach(div => {
+            // Fjern alle eksisterende klasser, og legg til kun ønsket klasse
+            div.className = "content bg-white";
+        });
+    }
+
     // Kjør når siden lastes inn
     fjernRullendeTekst();
+    hvitBakgrunn();
 
     // Kjør ved dynamisk innlasting
     const observer = new MutationObserver(() => {
         fjernRullendeTekst();
+        hvitBakgrunn();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
