@@ -17,7 +17,7 @@
     }
 
     // Kjør når siden lastes inn
-    removeBreakingRollingText();
+    fjernRullendeTekst();
 
     // Kjør ved dynamisk innlasting
     const observer = new MutationObserver(() => {
