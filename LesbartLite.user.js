@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gjør DB.no mer lesbar
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Gjør Dagbladets nettsider mer lesbare.
 // @author       AnBasement
 // @match        https://www.dagbladet.no/*
