@@ -14,7 +14,6 @@
     // Fjerner elementer med rullende tekst
     function fjernRullendeTekst() {
         document.querySelectorAll('div.breaking-rolling-text-slug').forEach(el => el.remove());
-        document.querySelectorAll('article.breaking--just-now').forEach(el => el.remove());
     }
 
     // Endrer bakgrunnen på artikler til hvit.
