@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gjør DB.no mer lesbar
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  Gjør Dagbladets nettsider mer lesbare.
 // @author       AnBasement
 // @match        https://www.dagbladet.no/*
@@ -37,11 +37,17 @@
     });
 }
 
+    // Fjerner DB-pluss
+    function fjernPluss() {
+        document.querySelectorAll('article[data-label="pluss"]').forEach(el => el.remove());
+    }
+
     // Kjør når siden lastes inn
     fjernRullendeTekst();
     hvitBakgrunn();
     fjernKickerAbove();
     stoppAutospill();
+    fjernPluss();
 
     // Kjør ved dynamisk innlasting
     const observer = new MutationObserver(() => {
@@ -49,6 +55,7 @@
         hvitBakgrunn();
     fjernKickerAbove();
     stoppAutospill();
+    fjernPluss();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
