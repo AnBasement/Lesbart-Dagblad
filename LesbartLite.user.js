@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gjør DB.no mer lesbar
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  Gjør Dagbladets nettsider mer lesbare.
 // @author       AnBasement
 // @match        https://www.dagbladet.no/*
@@ -42,12 +42,18 @@
         document.querySelectorAll('article[data-label="pluss"]').forEach(el => el.remove());
     }
 
+    // Fjerner reklame for DB Pluss
+    function fjernKjopPluss() {
+        document.querySelectorAll('a[href^="https://www.dagbladet.no/kjop-pluss"]').forEach(el => el.remove());
+    }
+
     // Kjør når siden lastes inn
     fjernRullendeTekst();
     hvitBakgrunn();
     fjernKickerAbove();
     stoppAutospill();
     fjernPluss();
+    fjernKjopPluss();
 
     // Kjør ved dynamisk innlasting
     const observer = new MutationObserver(() => {
@@ -56,6 +62,7 @@
     fjernKickerAbove();
     stoppAutospill();
     fjernPluss();
+    fjernKjopPluss();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
