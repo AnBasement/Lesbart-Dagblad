@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gjør DB.no mer lesbar
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.3.1
 // @description  Gjør Dagbladets nettsider mer lesbare.
 // @author       AnBasement
 // @match        https://www.dagbladet.no/*
@@ -14,7 +14,7 @@
     // Fjerner elementer med rullende tekst
     function fjernRullendeTekst() {
         document.querySelectorAll('div.breaking-rolling-text-slug').forEach(el => el.remove());
-        document.querySelectorAll('article.breaking--justnow').forEach(el => el.remove());
+        document.querySelectorAll('article.breaking--just-now').forEach(el => el.remove());
     }
 
     // Endrer bakgrunnen på artikler til hvit.
