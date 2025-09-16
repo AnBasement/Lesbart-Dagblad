@@ -11,6 +11,16 @@
 (function() {
     'use strict';
 
+    // --- CSS-injeksjon for å fjerne ::before-elementer ---
+    const style = document.createElement('style');
+    style.textContent = `
+        article.preview.breaking--just-now .content > a::before {
+            content: none !important;
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+
     // Fjerner elementer med rullende tekst
     function fjernRullendeTekst() {
         document.querySelectorAll('div.breaking-rolling-text-slug').forEach(el => el.remove());
@@ -36,7 +46,7 @@
             video.autoplay = false; // Deaktiver autoplay
             video.pause(); // Pauser video om aktiv
     });
-}
+    }
 
     // Fjerner DB-pluss
     function fjernPluss() {
@@ -45,7 +55,7 @@
 
     // Fjerner reklame for DB Pluss
     function fjernKjopPluss() {
-        document.querySelectorAll('a[href^="https://www.dagbladet.no/kjop-pluss"]').forEach(el => el.remove());
+    document.querySelectorAll('a[href^="https://www.dagbladet.no/kjop-pluss"], a[href^="https://www.dagbladet.no/pluss/kickstart"]').forEach(el => el.remove());
     }
 
     // Kjør når siden lastes inn
